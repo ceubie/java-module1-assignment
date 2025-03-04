@@ -73,7 +73,13 @@ public class ArrayObjective {
         }
         System.out.println("The largest number in your array is: " + max);
 
-        int sum = Arrays.stream(nums).sum();
+        // int sum = Arrays.stream(nums).sum(); // faster way to sum digits in array
+
+        int sum = 0;
+        for(int num : nums){  // for loop to sum digits in array
+            sum += num;
+        }
+
         System.out.println("The sum of the numbers in your array is: " + sum);
 
         int counter = 0;        // counter tracks how many even numbers are present in 'nums' array
