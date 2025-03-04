@@ -1,3 +1,5 @@
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -7,7 +9,7 @@ import java.util.Scanner;
 /// Reverse the Array: Reverse the array and print it.
 ///
 /// Find the Maximum and Minimum Values: Find the largest and smallest numbers in the array and print them.
-/// You should be running this process manually and not using a built in method to give you the answer.
+/// You should be running this process manually and not using a built-in method to give you the answer.
 ///
 /// Sum of the Array: Calculate the sum of all the numbers in the array and print the result.
 ///
@@ -17,9 +19,10 @@ import java.util.Scanner;
 public class ArrayObjective {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int[] nums = new int[5];
+        Scanner scanner = new Scanner(System.in); // create scanner
+        int[] nums = new int[5]; //create array
 
+        // Based on user input, assign values to 'nums' array for indices 0-4
         System.out.print("Enter the first digit for your array: ");
         nums[0] = scanner.nextInt();
         scanner.nextLine();
@@ -41,19 +44,29 @@ public class ArrayObjective {
 
         System.out.println("Here is your array: " + Arrays.toString(nums));
 
-        scanner.close();
+        scanner.close(); // close scanner
 
-        int min = nums[0];
-        int max = nums[0];
+        // create empty ArrayList that can be appended during the iterations of the following for loop
+        ArrayList<Integer> reverseOrder = new ArrayList<Integer>();
 
-        for (int num : nums) {
+        // for loop working backwards from final index to 0th index
+        for(int i = (nums.length - 1); i >= 0; i--){
+            reverseOrder.add(nums[i]);
+        }
+        System.out.println("Here is the reversed version of your array: " + reverseOrder); // print reversed array
+
+
+        int min = nums[0]; // set value to 0th index for effective comparison in for loop 1
+        int max = nums[0]; // set value to 0th index for effective comparison in for loop 2
+
+        for (int num : nums) {  // for loop 1 compares numbers in 'nums' to find smallest value in array
             if (num < min) {
                 min = num;
             }
         }
         System.out.println("The smallest number in your array is: " + min);
 
-        for(int i = 0; i < nums.length; i++){
+        for(int i = 0; i < nums.length; i++){   // for loop 2 compares numbers in 'nums' to find largest value in array
             if(nums[i] > max){
                 max = nums[i];
             }
@@ -63,9 +76,9 @@ public class ArrayObjective {
         int sum = Arrays.stream(nums).sum();
         System.out.println("The sum of the numbers in your array is: " + sum);
 
-        int counter = 0;
+        int counter = 0;        // counter tracks how many even numbers are present in 'nums' array
         for(int num : nums){
-            if(num % 2 == 0){
+            if(num % 2 == 0){   // if number is even, dividing by two gives no remainder
                 counter += 1;
             }
         }
